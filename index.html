@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Name That Song Challenge</title>
+    <style>
+        /* --- BASIC STYLES --- */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #f4f4f9; 
+            color: #333;
+            max-width: 600px; 
+        }
+
+        /* --- HEADER & LOGO STYLES --- */
+        .header-container {
+            display: flex;
+            align-items: center;     
+            justify-content: center; 
+            margin-bottom: 25px;
+            gap: 15px; 
+        }
+
+        .app-logo {
+            height: 50px; 
+            width: auto;  
+        }
+
+        h1 { 
+            text-align: center; 
+            color: #2c3e50; 
+            margin: 0; 
+            font-size: 1.8rem;
+            line-height: 1.1;
+        }
+
+        /* --- INTRO BOX STYLES --- */
+        .intro-box { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 16px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+            margin-bottom: 30px; 
+            border: 1px solid #e1e4e8;
+        }
+        
+        .intro-text p {
+            margin: 0 0 10px 0;
+            line-height: 1.5;
+        }
+
+        .divider {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 15px 0;
+        }
+
+        .greek-text {
+            color: #555;
+            font-style: italic; /* Makes Greek text distinct */
+        }
+        
+        .input-group { 
+            margin-bottom: 20px; 
+        }
+
+        label { 
+            display: block; 
+            font-weight: 600; 
+            margin-bottom: 8px; 
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        input[type="text"] { 
+            width: 100%; 
+            padding: 14px; 
+            border: 2px solid #eee; 
+            border-radius: 10px; 
+            font-size: 16px; 
+            box-sizing: border-box; 
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        
+        /* --- IMAGE CARD STYLES --- */
+        .card { 
+            background: white; 
+            padding: 20px; 
+            margin-bottom: 25px; 
+            border-radius: 16px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+        }
+
+        .card h3 { 
+            margin-top: 0; 
+            color: #007bff; 
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .card img { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 12px; 
+            display: block; 
+            margin-bottom: 20px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* --- BUTTON STYLES --- */
+        button { 
+            width: 100%; 
+            background-color: #28a745; 
+            color: white; 
+            border: none; 
+            padding: 18px; 
+            font-size: 18px; 
+            font-weight: bold; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            transition: background 0.3s, transform 0.1s; 
+            box-shadow: 0 4px 6px rgba(40, 167, 69, 0.2);
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        button:hover { background-color: #218838; }
+        button:active { transform: scale(0.98); } 
+        button:disabled { background-color: #94d3a2; cursor: not-allowed; transform: none; }
+
+        /* --- SUCCESS MESSAGE STYLES --- */
+        #success-message { 
+            display: none; 
+            text-align: center; 
+            background: #d4edda; 
+            color: #155724; 
+            padding: 30px; 
+            border-radius: 16px; 
+            margin-top: 20px; 
+            border: 1px solid #c3e6cb; 
+        }
+        
+        #success-message h2 { margin-top: 0; }
+
+        /* --- FOOTER STYLES --- */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 0.85em;
+            color: #777;
+            font-style: italic;
+        }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 480px) {
+            body { padding: 12px; }
+            .header-container { gap: 10px; margin-bottom: 20px; }
+            .app-logo { height: 40px; }
+            h1 { font-size: 1.6rem; }
+            .intro-box, .card { padding: 18px; }
+            button { padding: 16px; font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <img src="logo.png" alt="App Logo" class="app-logo">
+        <h1>Name That Song</h1>
+    </div>
+    
+    <div class="intro-box">
+        <div class="intro-text">
+            <p>Identify the songs from the infographics below. <strong>You need 10/12 to win.</strong> I will review your answers manually and contact you via Facebook Messenger!</p>
+            
+            <hr class="divider">
+            
+            <p class="greek-text">Αναγνώρισε τα τραγούδια από τα παρακάτω infographics. <strong>Χρειάζεσαι 10 στα 12 για να κερδίσεις.</strong> Θα ελέγξω τις απαντήσεις σου και θα επικοινωνήσω μαζί σου μέσω Facebook Messenger!</p>
+        </div>
+        
+        <br>
+
+        <div class="input-group">
+            <label for="username">Your Name / Το Όνομά σου:</label>
+            <input type="text" id="username" placeholder="e.g. John Doe" autocomplete="name">
+        </div>
+        <div class="input-group">
+            <label for="fb_contact">Facebook Name or Link / Όνομα ή Link στο Facebook:</label>
+            <input type="text" id="fb_contact" placeholder="So we can message you / Για να επικοινωνήσουμε">
+        </div>
+    </div>
+
+    <div id="quiz-container"></div>
+
+    <button onclick="submitAnswers()" id="submitBtn">Submit Answers / Υποβολή</button>
+
+    <div id="success-message">
+        <h2>✅ Received / Ελήφθησαν!</h2>
+        <p>Your answers have been stored.</p>
+        <p class="greek-text" style="margin-top:5px;">Οι απαντήσεις σου αποθηκεύτηκαν.</p>
+        <hr class="divider">
+        <p>We will check your score and message you shortly on Facebook.</p>
+        <p class="greek-text" style="margin-top:5px;">Θα ελέγξουμε το σκορ σου και θα σου στείλουμε σύντομα μήνυμα στο Facebook.</p>
+    </div>
+
+    <footer>
+        ✨✍️ Created by Panagiotis Domvros, English and Drama Teacher, All Rights Reserved ✍️✨
+    </footer>
+
+    <script>
+        // YOUR SPECIFIC GOOGLE SCRIPT URL
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwba4Z0f1SfTL6nFxn5ngzFZbzWdWFSpuQ_nmkHWf7wyIwFxfkabJJ_V0GrzMVbimbkGg/exec";
+
+        // 1. Generate the 12 Image Cards
+        const container = document.getElementById('quiz-container');
+        
+        // Loop from 1 to 12
+        for (let i = 1; i <= 12; i++) {
+            container.innerHTML += `
+                <div class="card">
+                    <h3>Infographic #${i}</h3>
+                    <img src="${i}.png" alt="Song Puzzle ${i}" loading="lazy">
+                    <label style="margin-bottom: 8px; display:block;">What song is this? / Ποιο τραγούδι είναι;</label>
+                    <input type="text" id="answer-${i}" placeholder="Type song title...">
+                </div>
+            `;
+        }
+
+        // 2. Submit Logic
+        function submitAnswers() {
+            const name = document.getElementById('username').value;
+            const fb = document.getElementById('fb_contact').value;
+            const btn = document.getElementById('submitBtn');
+
+            // Validation
+            if(!name || !fb) {
+                alert("Please enter your Name and Facebook details! / Παρακαλώ συμπλήρωσε το Όνομα και το Facebook!");
+                return;
+            }
+
+            // Visual feedback
+            btn.innerText = "Sending... / Αποστολή...";
+            btn.disabled = true;
+
+            // Collect all 12 answers into an object
+            let userAnswers = {};
+            for (let i = 1; i <= 12; i++) {
+                let val = document.getElementById(`answer-${i}`).value;
+                userAnswers[`song_${i}`] = val; 
+            }
+
+            // Prepare the data package to send
+            const submissionData = {
+                name: name,
+                facebook_contact: fb,
+                answers: userAnswers
+            };
+
+            // Send to Google Sheets using "no-cors" mode
+            fetch(SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors", 
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(submissionData)
+            })
+            .then(() => {
+                // Success! Hide the form and show the Success Message
+                btn.style.display = 'none';
+                container.style.display = 'none';
+                document.querySelector('.intro-box').style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+                
+                // Scroll to top so they see the message
+                window.scrollTo(0, 0);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Error. Please check internet. / Σφάλμα. Ελέγξτε τη σύνδεση.");
+                btn.innerText = "Submit Answers / Υποβολή";
+                btn.disabled = false;
+            });
+        }
+    </script>
+
+</body>
+</html>
